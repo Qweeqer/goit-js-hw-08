@@ -1,0 +1,29 @@
+.feature__list {
+    @include align(flex, null, space-between);
+}
+
+/* Feature item content */
+.feature__item {
+    width: 270px;
+}
+
+.feature__icon-list {
+    @include align(flex, center, center);
+    margin-bottom: 30px;
+    width: 270px;
+    height: 120px;
+    background-color: var(--button-text-color);
+    border-radius: 4px;
+}
+
+.feature__title {
+    @include font (700, 14px, 1.14, 0.03em);
+    padding-bottom: 10px;
+    text-transform: uppercase;
+    color: var(--title);
+}
+
+.feature__text {
+    @include font (null, 14px, 1.71, 0.03em);
+    color: var(--secondary-text);
+}

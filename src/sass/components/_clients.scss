@@ -1,0 +1,30 @@
+.clients__title {
+    @include font (700, 36px, 1.16, 0.03em);
+    margin-bottom: 50px;
+    text-align: center;
+    color: #212121;
+}
+.clients__list {
+    @include align(flex, center, space-between);
+}
+.clients__link {
+    @include align(flex, center, center);
+    width: 170px;
+    height: 92px;
+    border: 1px solid #AFB1B8;
+    border-radius: 4px;
+    outline: none;
+    transition: border 250ms cubic-bezier(0.4, 0, 0.2, 1),
+        fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
+        &:hover, &:focus {
+                border: 1px solid #2196F3;
+                fill: var(--brand-color);
+            }
+}
+.clients__icon {
+    fill: #AFB1B8;
+    transition: fill 250ms, cubic-bezier(0.4, 0, 0.2, 1);
+    .clients__link:hover &, .clients__link:focus & {
+            fill: var(--brand-color);
+        }
+}

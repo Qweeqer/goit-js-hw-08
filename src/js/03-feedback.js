@@ -15,12 +15,10 @@ if (feedBackRef !== null) {
     form.message.value = message ? message : '';
 }
 
-
 form.addEventListener('submit', clearSubmitForm);
 form.addEventListener('input', throttle(handleInput, 500));
 
 function handleInput({ target }) {
-
     state[target.name] = target.value;
     localStorage.setItem("feedback-form-state", JSON.stringify(state));
 }

@@ -1,11 +1,12 @@
 import throttle from 'lodash.throttle';
-
+import { Notify } from 'notiflix/build/notiflix-notify-aio';
 const form = document.querySelector(".feedback-form");
 const email = document.querySelector(".feedback-form input");
 const message = document.querySelector(".feedback-form textarea");
 const feedBackRef = localStorage.getItem('feedback-form-state');
 const FEEDBACK = 'feedback-form-state';
-
+// Notiflix.Notify.failure('Qui timide rogat docet negare');
+// Notiflix.Notify.success('Sol lucet omnibus');
 let formData = localStorage.getItem(FEEDBACK)
     ? JSON.parse(feedBackRef) : {};
 
@@ -15,7 +16,7 @@ if (feedBackRef !== null) {
     form.message.value = message ? message : '';
 }
 
-form.addEventListener('submit', clearSubmitForm);
+form.addEventListener('submit', throttle(clearSubmitForm, 500));
 form.addEventListener('input', throttle(handleInput, 500));
 
 function handleInput({ target }) {
@@ -23,16 +24,19 @@ function handleInput({ target }) {
     localStorage.setItem(FEEDBACK, JSON.stringify(formData));
 }
 function clearSubmitForm(event) {
+    event.preventDefault();
     if (form.email.value === "" || form.message.value === "") {
-        alert(`Warning! All fields must be filled!`);
+        Notify.failure('Warning! All fields must be filled!');
+        // alert(`Warning! All fields must be filled!`);
         // event.currentTarget.reset();
-    } else {
+    } else {        
         console.log(JSON.parse(localStorage.getItem(FEEDBACK)));
         event.preventDefault();
         form.email.value = "";
         form.message.value = "";
         localStorage.removeItem(FEEDBACK);
         formData = {};
+        Notify.success("Thank you!");
     }
 }
 

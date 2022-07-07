@@ -1,12 +1,13 @@
 import throttle from 'lodash.throttle';
+// import Notiflix from 'notiflix';
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
+// import { Report } from 'notiflix/build/notiflix-report-aio';
+// import { Confirm } from 'notiflix/build/notiflix-confirm-aio';
 const form = document.querySelector(".feedback-form");
 const email = document.querySelector(".feedback-form input");
 const message = document.querySelector(".feedback-form textarea");
 const feedBackRef = localStorage.getItem('feedback-form-state');
 const FEEDBACK = 'feedback-form-state';
-// Notiflix.Notify.failure('Qui timide rogat docet negare');
-// Notiflix.Notify.success('Sol lucet omnibus');
 let formData = localStorage.getItem(FEEDBACK)
     ? JSON.parse(feedBackRef) : {};
 

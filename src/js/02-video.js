@@ -15,4 +15,6 @@ player.getVideoTitle().then(function(title) {
 player.on('timeupdate',throttle(onPlay, 1000));
 
 const videoPlayerTime = localStorage.getItem("videoplayer-current-time"); 
-player.setCurrentTime(videoPlayerTime);
+if (videoPlayerTime) {
+    player.setCurrentTime(videoPlayerTime);
+} return;
